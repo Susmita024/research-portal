@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\Admin\ResearchPaperAdminController;
+use App\Http\Controllers\User\ResearchPaperUserController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResearchPaperController;
 
@@ -16,18 +18,26 @@ Route::get('/home', function () {
     return view('index');
 });
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
+
+    Route::get('dashboard', [ResearchPaperUserController::class, 'index'])->name('dashboard');
+    Route::get('/research/create', [ResearchPaperUserController::class, 'create'])->name('user.submit');
+    Route::post('/research', [ResearchPaperUserController::class, 'store'])->name('user.research.store');
+    Route::delete('/research/{id}', [ResearchPaperUserController::class, 'destroy'])->name('user.research.destroy');
+
+
+
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/submit-paper', [ResearchPaperController::class, 'create'])->name('papers.create');
     Route::post('/submit-paper', [ResearchPaperController::class, 'store'])->name('papers.store');
+
+
+
 });
 
 Route::middleware('admin')->group(function () {

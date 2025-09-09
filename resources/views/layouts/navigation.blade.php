@@ -5,8 +5,12 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="\">
+                        <svg class="h-12 w-auto" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21.7289 10.2711C21.7289 11.9298 20.3921 13.2666 18.7334 13.2666C17.0747 13.2666 15.7379 11.9298 15.7379 10.2711C15.7379 8.61238 17.0747 7.27563 18.7334 7.27563C20.3921 7.27563 21.7289 8.61238 21.7289 10.2711ZM23.7289 10.2711C23.7289 13.0327 21.5037 15.2666 18.7334 15.2666C15.9631 15.2666 13.7379 13.0327 13.7379 10.2711C13.7379 7.50951 15.9631 5.27563 18.7334 5.27563C21.5037 5.27563 23.7289 7.50951 23.7289 10.2711Z" fill="#3B82F6" />
+                            <path d="M10.2666 15.7379C11.9253 15.7379 13.2621 17.0747 13.2621 18.7334C13.2621 20.3921 11.9253 21.7289 10.2666 21.7289C8.60788 21.7289 7.27113 20.3921 7.27113 18.7334C7.27113 17.0747 8.60788 15.7379 10.2666 15.7379Z" fill="#F97316" />
+                            <path d="M10.2666 13.7379C13.0282 13.7379 15.2621 15.9631 15.2621 18.7334C15.2621 21.5037 13.0282 23.7289 10.2666 23.7289C7.50503 23.7289 5.27113 21.5037 5.27113 18.7334C5.27113 15.9631 7.50503 13.7379 10.2666 13.7379Z" fill="#F97316" />
+                        </svg>
                     </a>
                 </div>
 
@@ -14,6 +18,11 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('user.submit')" :active="request()->routeIs('user.submit')">
+                        {{ __('Submit Paper') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -42,8 +51,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -88,8 +96,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
