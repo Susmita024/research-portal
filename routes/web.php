@@ -14,10 +14,6 @@ Route::get('/papers/{paper}', [ResearchPaperController::class, 'show'])->name('p
 Route::delete('/admin/papers/{paper}', [ResearchPaperAdminController::class, 'destroy'])->name('admin.papers.destroy');
 
 
-Route::get('/home', function () {
-    return view('index');
-});
-
 Route::middleware('auth')->group(function () {
 
     Route::get('dashboard', [ResearchPaperUserController::class, 'index'])->name('dashboard');

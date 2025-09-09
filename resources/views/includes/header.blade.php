@@ -12,12 +12,11 @@
 
         <!-- Desktop Navigation -->
         <div id="desktop-menu" class="hidden md:flex items-center space-x-4">
-            <a href="/" class="p-2 rounded-md {{ request()->routeIs('home') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">Home</a>
+            <a href="/" class="p-2 rounded-md {{ request()->routeIs('papers.index') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">Home</a>
             <a href="/" class="p-2 rounded-md {{ request()->routeIs('about') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">About</a>
             <a href="/" class="p-2 rounded-md {{ request()->routeIs('contact') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">Contact</a>
 
             @auth
-            <a href="/" class="p-2 rounded-md {{ request()->routeIs('submit') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">Submit</a>
             <div class="relative group">
                 <button class="flex items-center space-x-2 focus:outline-none">
                     <span class="text-white">{{ Auth::user()->name }}</span>
