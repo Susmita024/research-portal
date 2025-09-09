@@ -35,9 +35,32 @@
         </div>
 
         <div class="mt-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Featured Papers</h2>
-            <p class="text-gray-600">This is the main content of the index page.</p>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Recently Published Papers</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @forelse($papers as $paper)
+                <div class="bg-white rounded-lg shadow p-6 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ $paper->title }}</h3>
+                        <p class="text-gray-600 text-sm mb-2"><strong>Authors:</strong> {{ $paper->authors }}</p>
+                        <p class="text-gray-700 mb-4">{{ Str::limit($paper->abstract, 150) }}</p>
+                    </div>
+
+                    <div class="flex flex-col space-y-2">
+                        @if($paper->pdf_path)
+                        <a href="{{ Storage::url($paper->pdf_path) }}" target="_blank" class="text-blue-600 hover:underline">Download PDF</a>
+                        @endif
+                        @if($paper->paper_link)
+                        <a href="{{ $paper->paper_link }}" target="_blank" class="text-blue-600 hover:underline">External Link</a>
+                        @endif
+                    </div>
+                </div>
+                @empty
+                <p class="col-span-full text-gray-600">No papers found.</p>
+                @endforelse
+            </div>
         </div>
+
     </main>
 
     <!-- Footer -->
