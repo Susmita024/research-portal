@@ -11,7 +11,6 @@ use App\Http\Controllers\ResearchPaperController;
 Route::get('/', [ResearchPaperController::class, 'index'])->name('papers.index');
 
 Route::get('/papers/{paper}', [ResearchPaperController::class, 'show'])->name('papers.show');
-Route::delete('/admin/papers/{paper}', [ResearchPaperAdminController::class, 'destroy'])->name('admin.papers.destroy');
 
 
 Route::middleware('auth')->group(function () {
@@ -26,11 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('admin')->group(function () {
-    Route::get('admin/dashboard', fn () => 'Welcome Admin!')->name('admin.dashboard');
-});
 
-Route::prefix('admin')->group(function () {
+Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('login', [AdminAuthController::class, 'loginForm'])->name('admin.login');
     Route::post('login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 
@@ -40,6 +36,8 @@ Route::prefix('admin')->group(function () {
 
     Route::get('research/create', [ResearchPaperAdminController::class, 'create'])->name('admin.research.create');
     Route::post('research/store', [ResearchPaperAdminController::class, 'store'])->name('admin.research.store');
+   
+    Route::delete('/admin/papers/{paper}', [ResearchPaperAdminController::class, 'destroy'])->name('admin.papers.destroy');
     
 });
 

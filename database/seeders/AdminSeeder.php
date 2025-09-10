@@ -12,7 +12,7 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         Admin::updateOrCreate(
-            ['email' => 'admin@researchportal.com'], // Unique field
+            ['email' => 'admin@rp.com'], // Unique field
             [
                 'name' => 'Admin',
                 'password' => Hash::make('password'),

@@ -49,8 +49,8 @@
 
                         <!-- PDF File -->
                         <div>
-                            <label for="pdf" class="block text-sm font-medium text-gray-700">PDF File</label>
-                            <input type="file" name="pdf" id="pdf" accept="application/pdf" class="mt-1 block w-full text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 @error('pdf') border-red-500 @enderror">
+                            <label for="pdf" class="block text-sm font-medium text-gray-700">PDF File<span class="text-red-500">*</span></label>
+                            <input type="file" name="pdf" id="pdf" required accept="application/pdf" class="mt-1 block w-full text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 @error('pdf') border-red-500 @enderror">
                             @error('pdf')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
