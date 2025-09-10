@@ -59,6 +59,14 @@
                 <p class="col-span-full text-gray-600">No papers found.</p>
                 @endforelse
             </div>
+
+            <!-- Pagination -->
+                <!-- Pagination -->
+    <div class="mt-6">
+        {{ $papers->withQueryString()->links('pagination::tailwind') }}
+    </div>
+
+
         </div>
 
     </main>

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResearchPaperController;
 
 Route::get('/', [ResearchPaperController::class, 'index'])->name('papers.index');
-
+Route::get('/search', [ResearchPaperController::class, 'index'])->name('papers.search');
 Route::get('/papers/{paper}', [ResearchPaperController::class, 'show'])->name('papers.show');
 
 

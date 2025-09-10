@@ -9,9 +9,23 @@ use Illuminate\Support\Facades\Storage;
 class ResearchPaperController extends Controller
 {
     // Show all approved papers
-    public function index() {
+    public function index(Request $request) {
         $papers = ResearchPaper::where('status', 'approved')->latest()->get();
+
+        $query = ResearchPaper::query();
+        if ($request->has('query') && $request->query('query') !== '') {
+            $search = $request->query('query');
+            $query->where('title', 'like', "%{$search}%")
+                  ->orWhere('authors', 'like', "%{$search}%")
+                  ->orWhere('abstract', 'like', "%{$search}%");
+        }
+
+        // Paginate results (9 per page for grid layout)
+        $papers = $query->latest()->paginate(15);
+
         return view('index', compact('papers')); // or your homepage view
+
+
     }
 
     // Show submission form
