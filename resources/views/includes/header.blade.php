@@ -13,8 +13,8 @@
         <!-- Desktop Navigation -->
         <div id="desktop-menu" class="hidden md:flex items-center space-x-4">
             <a href="/" class="p-2 rounded-md {{ request()->routeIs('papers.index') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">Home</a>
-            <a href="/" class="p-2 rounded-md {{ request()->routeIs('about') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">About</a>
-            <a href="/" class="p-2 rounded-md {{ request()->routeIs('contact') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">Contact</a>
+            <a href="{{route('about')}}" class="p-2 rounded-md {{ request()->routeIs('about') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">About</a>
+            <a href="{{route('contact')}}" class="p-2 rounded-md {{ request()->routeIs('contact') ? 'bg-blue-500' : 'hover:bg-blue-500' }} transition duration-300">Contact</a>
 
             @auth
             <div class="relative group">
@@ -45,8 +45,8 @@
     <div id="mobile-menu" class="hidden md:hidden w-full bg-blue-600">
         <div class="flex flex-col items-center mt-4 space-y-2">
             <a href="/" class="block w-full text-center p-2 rounded-md {{ request()->routeIs('home') ? 'bg-blue-700' : 'hover:bg-blue-500' }} transition duration-300">Home</a>
-            <a href="/" class="block w-full text-center p-2 rounded-md {{ request()->routeIs('about') ? 'bg-blue-700' : 'hover:bg-blue-500' }} transition duration-300">About</a>
-            <a href="/" class="block w-full text-center p-2 rounded-md {{ request()->routeIs('contact') ? 'bg-blue-700' : 'hover:bg-blue-500' }} transition duration-300">Contact</a>
+            <a href="{{route('about')}}" class="block w-full text-center p-2 rounded-md {{ request()->routeIs('about') ? 'bg-blue-700' : 'hover:bg-blue-500' }} transition duration-300">About</a>
+            <a href="{{route('contact')}}" class="block w-full text-center p-2 rounded-md {{ request()->routeIs('contact') ? 'bg-blue-700' : 'hover:bg-blue-500' }} transition duration-300">Contact</a>
 
             @auth
             <a href="#" class="block w-full text-center p-2 rounded-md hover:bg-blue-500 transition duration-300">Profile</a>
@@ -58,7 +58,6 @@
 
             @guest
             <a href="{{ route('login') }}" class="block w-full text-center p-2 rounded-md hover:bg-blue-500 transition duration-300">Login</a>
-            <a href="{{ route('register') }}" class="block w-full text-center p-2 rounded-md bg-blue-700 hover:bg-blue-800 transition duration-300">Register</a>
             @endguest
         </div>
     </div>

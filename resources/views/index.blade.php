@@ -46,7 +46,7 @@
                         <p class="text-gray-700 mb-4">{{ Str::limit($paper->abstract, 150) }}</p>
                     </div>
 
-                    <div class="flex flex-col space-y-2">
+                    <div class="flex items-center justify-between">
                         @if($paper->pdf_path)
                         <a href="{{ Storage::url($paper->pdf_path) }}" target="_blank" class="text-blue-600 hover:underline">Download PDF</a>
                         @endif
@@ -61,10 +61,10 @@
             </div>
 
             <!-- Pagination -->
-                <!-- Pagination -->
-    <div class="mt-6">
-        {{ $papers->withQueryString()->links('pagination::tailwind') }}
-    </div>
+            <!-- Pagination -->
+            <div class="mt-6">
+                {{ $papers->withQueryString()->links('pagination::tailwind') }}
+            </div>
 
 
         </div>
